@@ -9,9 +9,9 @@ data "google_container_registry_repository" "all_repos" {
 
 locals {
   my_repo = {
-    for repo in data.google_container_registry_repository.all_repos : 
-    repo.name => repo
-    if repo.name == "my-repo-lili"
+    for repo_name, repo in data.google_container_registry_repository.all_repos : 
+    repo_name => repo
+    if contains(keys(repo), "my-repo-lili")
   }
 }
 
