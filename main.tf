@@ -4,12 +4,12 @@ provider "google" {
 }
 
 data "google_container_registry_repository" "my_repo" {
-  filter {
-    name = "my-repo-lili"
-  }
+  name    = "my-repo-lili"
+  project = "lili-devops"
 }
 
 output "repository_name" {
   value = data.google_container_registry_repository.my_repo.repositories[0].name
 }
+
 
