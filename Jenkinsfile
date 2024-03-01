@@ -7,7 +7,7 @@ pipeline {
     
     environment {
         // Google Cloud credentials
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('lili-gcp-private-key')
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('lili-gcp-service-account-key-json')
         PROJECT_ID = 'lili-devops'
      
     }
