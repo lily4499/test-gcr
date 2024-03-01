@@ -3,11 +3,20 @@ provider "google" {
   region  = "us-east4"
 }
 
-data "google_container_registry_repository" "my_repo" {
-  filter = "my-repo-lili"
+data "google_container_registry_repository" "all_repos" {
+  project = "lili-devops"
+}
+
+locals {
+  my_repo = {
+    for repo in data.google_container_registry_repository.all_repos.repositories : 
+    repo.name => repo
+    if repo.name == "my-repo-lili"
+  }
 }
 
 output "repository_name" {
-  value = data.google_container_registry_repository.my_repo.repositories[0].name
+  value = local.my_repo["my-repo-lili"].name
 }
+
 
