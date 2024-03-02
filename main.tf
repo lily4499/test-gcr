@@ -1,6 +1,5 @@
 provider "google" {
   project = "lili-devops"
-  region  = "us-east4"
 }
 
 resource "google_artifact_registry_repository" "my_repository" {
